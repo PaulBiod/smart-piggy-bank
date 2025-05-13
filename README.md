@@ -54,7 +54,10 @@ The files relative to Home assistant automations are :
 
   IMPORTANT 2 :
   in Home assistant, you have to create an input helper (input_number) called : total-tirelire
+
 ![image](https://github.com/user-attachments/assets/6d046f66-09ac-4a0f-8dee-861e2b5d3c3b)
+
+
 
 
 
