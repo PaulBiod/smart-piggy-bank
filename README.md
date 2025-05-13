@@ -50,7 +50,7 @@ The files relative to Home assistant automations are :
 - piggybank_update_total.yaml
 
   IMPORTANT :
-  the file relative to Home assistant automations need to be checked, cause I use a night mode, and I'm checking if night mode is ON before making announcements. Also, I use multinotify script to make announcements, so this has to be changed for you, but it's not a big deal.
+  the file relative to Home assistant automations need to be checked, cause I use a night mode, and I'm checking if night mode is ON before making announcements. Also, I use multinotify script to make announcements, so this has to be changed for you, but it's not a big deal, the same for the script awtrix notifications which sends the message to my awtrix device..
 
 
 
