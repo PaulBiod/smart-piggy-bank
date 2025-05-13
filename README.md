@@ -38,3 +38,12 @@ The touch screen allows to enter in a menu where you can select the amount you w
 When a coin in inserted, a small funny message on the screen will be displayed. It's in spanish but just do some google translate to understand.
 
 I'm not going to talk about wiring, cause it's pretty easy and can be found online (how to wire a touchscreen, a buzzer, an optocoupler)
+
+On the Home assistant side, this is basically what you get : 
+
+![image](https://github.com/user-attachments/assets/5f7affb2-b7ee-4ad9-b0d3-b5ff4571e609)
+
+![image](https://github.com/user-attachments/assets/7a96f9bd-5534-4105-b9a2-f9513d98d15e)
+
+The print is a little big long, but this is the v2, bigger than v1 which was very hard to arrange the cables. V2 is really pratical cause the coins can't touch the electronic parts, and are removable via a smart drawer.
+I made the entire design, except for the locking door, I used this print ( https://makerworld.com/en/models/671454-safe-mini-vault-money-bank-piggy-bank?from=search#profileId-599182 ) to just take the door part that I needed and adapted it to my design 
