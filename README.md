@@ -47,3 +47,29 @@ On the Home assistant side, this is basically what you get :
 
 The print is a little big long, but this is the v2, bigger than v1 which was very hard to arrange the cables. V2 is really pratical cause the coins can't touch the electronic parts, and are removable via a smart drawer.
 I made the entire design, except for the locking door, I used this print ( https://makerworld.com/en/models/671454-safe-mini-vault-money-bank-piggy-bank?from=search#profileId-599182 ) to just take the door part that I needed and adapted it to my design 
+
+Here are some pictures to help you see how it's done : 
+![20250511_172440](https://github.com/user-attachments/assets/0b1b2f14-5c9c-4a6f-a3af-602bd0a5ca4a)
+
+![20250511_172515](https://github.com/user-attachments/assets/5618958f-5379-4555-8bce-cdd1e9d11900)
+
+![20250512_164216](https://github.com/user-attachments/assets/a1f2a37c-5962-491c-aa76-ae6d1fe4d120)
+
+![20250512_164221](https://github.com/user-attachments/assets/f02801d4-d9f2-46d7-bffe-ad5b2562efdc)
+
+![20250512_164224](https://github.com/user-attachments/assets/78cc710a-667d-4ead-ad88-886817e97c8c)
+
+![20250512_164228](https://github.com/user-attachments/assets/3ed49b94-81fb-45ea-b329-056c8db6a8ce)
+
+![20250512_164637](https://github.com/user-attachments/assets/204d8fde-a033-471b-a799-ce622f6f4c7d)
+
+![20250512_164640](https://github.com/user-attachments/assets/c7bf6d9e-85e7-41f2-aa47-53849121fd76)
+
+![20250512_171628](https://github.com/user-attachments/assets/425ebdcd-8638-4ba3-b094-4ef6d40e06d6)
+
+![20250512_171635](https://github.com/user-attachments/assets/4a172f47-da84-409c-ae60-cf095c8db935)
+
+![20250512_181403](https://github.com/user-attachments/assets/fdcd9665-d2f5-42cc-abdd-302661d50930)
+
+
+
