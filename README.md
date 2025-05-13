@@ -17,8 +17,8 @@ Features :
 
 
 So, when I first create this project, I was thinking about how to recognize the coins.
-It was not an easy issue, cause I tried a sensor for the weight, but some coins were almost the same weight and the sensor was not as accurate as it needed to be.
-I know there is some coin organizers but they need some big parts, and this was not imaginable for a piggy bank.
+It was not an easy issue, cause I tried a weight sensor, but some coins were almost the same weight and the sensor was not as accurate as it needed to be.
+I know there is some coin organizers but they are pretty big, and this was not imaginable for a piggy bank.
 So, I went the secure way, one slot for each coin, one optocoupler for each slot (for euros we have 8 type of coins, so 8 optocouplers), I use an esp32 S3 because the touchscreen is displaying some gifs, and these need more memory. Also, with 8 optocouplers (24 cables) + touchscreen (12 cables) + buzzer (3 cables)
 
 ![20250511_172515](https://github.com/user-attachments/assets/7315b1f6-51e0-4d13-a50c-ec30fe425a1e)
@@ -30,7 +30,7 @@ So, for this project, you need :
 - Many dupont cables, I suggest at least 20cm cables for the screen
 - Wago connectors to organize all positive and negative optocouplers cables.
 
-Also, I suggest organizing the cables in a way that it won't be a mess, so that you can easily check the wiring if something is not Ok.
+Also, I suggest organizing the cables in a way that it won't be a mess, so that you can easily check the wiring if something is wrong.
 
 The yaml part of the esphome is pretty easy and understandable.
 For each optocoupler, you define a pin. On coin inserted, it sends the amount to Home assistant, and home assistant keep the count in an input helper.
