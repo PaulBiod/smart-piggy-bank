@@ -45,6 +45,15 @@ On the Home assistant side, this is basically what you get :
 
 ![image](https://github.com/user-attachments/assets/7a96f9bd-5534-4105-b9a2-f9513d98d15e)
 
+The files relative to Home assistant automations are : 
+- piggybank_withdrawal.yaml
+- piggybank_update_total.yaml
+
+  IMPORTANT :
+  the file relative to Home assistant automations need to be checked, cause I use a night mode, and I'm checking if night mode is ON before making announcements. Also, I use multinotify script to make announcements, so this has to be changed for you, but it's not a big deal.
+
+
+
 The print is a little big long, but this is the v2, bigger than v1 which was very hard to arrange the cables. V2 is really pratical cause the coins can't touch the electronic parts, and are removable via a smart drawer.
 I made the entire design, except for the locking door, I used this print ( https://makerworld.com/en/models/671454-safe-mini-vault-money-bank-piggy-bank?from=search#profileId-599182 ) to just take the door part that I needed and adapted it to my design 
 
