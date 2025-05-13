@@ -2,6 +2,9 @@
 A smart piggy bank for your home assistant instance
 ![20250512_181409](https://github.com/user-attachments/assets/8a0f2bee-9713-42b3-8339-425e0cb6b09c)
 
+Link to the youtube video of the smart piggybank in operation : 
+https://makerworld.com/en/models/671454-safe-mini-vault-money-bank-piggy-bank
+
 Features : 
 - A smart way to count your savings
 - keep track of your savings in Home assistant
