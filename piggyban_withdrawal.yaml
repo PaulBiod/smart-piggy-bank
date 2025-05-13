@@ -1,0 +1,116 @@
+alias: tire-lire retrait
+description: ""
+mode: single
+triggers:
+  - entity_id:
+      - sensor.tirelire_s3_retrait
+    above: 0
+    id: retrait
+    enabled: true
+    trigger: numeric_state
+conditions:
+  - condition: template
+    value_template: >-
+      {{ states('sensor.tirelire_s3_montant_retrait')|is_number  and
+      states('sensor.tirelire_s3_montant_retrait')|float > 0 }}
+actions:
+  - metadata: {}
+    data_template:
+      entity_id: input_number.total_tirelire
+      value: >-
+        {{ states('input_number.total_tirelire')|float(0) -
+        states('sensor.tirelire_s3_montant_retrait')|float(0) }}
+    target:
+      entity_id: input_number.total_tirelire
+    action: input_number.set_value
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - if:
+      - condition: state
+        entity_id: input_boolean.mode_sommeil_activation_par_la_voix_alexa
+        state: "off"
+    then:
+      - data:
+          message: >-
+            <voice name="Lucia"> <lang xml:lang="es-ES"> <say-as
+            interpret-as='interjection'>aggggh, estoy fipando!</say-as> Quité : 
+            {{ states.sensor.tirelire_s3_montant_retrait.state.split(".")[0]  }}
+            euros     {%
+            if(states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] |
+            int > 0)  %}  {%
+            if(states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] |
+            length() ) > 1   %} y {{
+            states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] |
+            int(0)  }} céntimos {% else %} y {{
+            states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] |
+            int(0) * 10 }} céntimos{% endif %} {% endif %} del peto. Ahora, te
+            queda : 
+
+            {{ states.input_number.total_tirelire.state.split(".")[0]  }}
+            euros     {%
+            if(states.input_number.total_tirelire.state.split(".")[1] | int >
+            0)  %}  {% if(states.input_number.total_tirelire.state.split(".")[1]
+            | length() ) > 1   %} y {{
+            states.input_number.total_tirelire.state.split(".")[1] | int(0)  }}
+            céntimos {% else %} y {{
+            states.input_number.total_tirelire.state.split(".")[1] | int(0) * 10
+            }} céntimos{% endif %} {% endif %}. <say-as
+            interpret-as='interjection'>ay ay ay</say-as></lang></voice>
+          alexa_target: media_player.echo_show_cuisine
+          alexa_type: tts
+          alexa_force: false
+        enabled: true
+        action: script.multinotify
+  - data:
+      message: >-
+        <lang xml:lang="fr-FR"> <say-as interpret-as='interjection'>Oh
+        non!</say-as> J'ai retiré :  {{
+        states.sensor.tirelire_s3_montant_retrait.state.split(".")[0]  }}
+        euros     {%
+        if(states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] | int >
+        0)  %}  {%
+        if(states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] |
+        length() ) > 1   %} et {{
+        states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] | int(0) 
+        }} centimes {% else %} y {{
+        states.sensor.tirelire_s3_montant_retrait.state.split(".")[1] | int(0) *
+        10 }} centimes{% endif %} {% endif %} de la tire-lire. Il reste
+        maintenant : 
+
+        {{ states.input_number.total_tirelire.state.split(".")[0]  }} euros    
+        {% if(states.input_number.total_tirelire.state.split(".")[1] | int > 0) 
+        %}  {% if(states.input_number.total_tirelire.state.split(".")[1] |
+        length() ) > 1   %} et {{
+        states.input_number.total_tirelire.state.split(".")[1] | int(0)  }}
+        centimes {% else %} y {{
+        states.input_number.total_tirelire.state.split(".")[1] | int(0) * 10 }}
+        centimes{% endif %} {% endif %}. <say-as
+        interpret-as='interjection'>Dommage</say-as></lang>
+      alexa_target: media_player.echo_show_cuisine
+      alexa_type: tts
+      alexa_force: false
+    enabled: false
+    action: script.multinotify
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - data:
+      message: "total tirelire : {{ states('input_number.total_tirelire') }} euros"
+      icon: "2147"
+      rainbow: "false"
+      duration: "10"
+      background:
+        - 0
+        - 150
+        - 255
+      color:
+        - 0
+        - 0
+        - 0
+      effect: ""
+    action: script.awtrix_notification

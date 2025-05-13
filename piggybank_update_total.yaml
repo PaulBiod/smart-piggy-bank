@@ -1,0 +1,107 @@
+alias: tire-lire update total
+description: ""
+triggers:
+  - entity_id:
+      - binary_sensor.tirelire_s3_0_01
+      - binary_sensor.tirelire_s3_0_02
+      - binary_sensor.tirelire_s3_0_05
+      - binary_sensor.tirelire_s3_0_1
+      - binary_sensor.tirelire_s3_0_2
+      - binary_sensor.tirelire_s3_0_5
+      - binary_sensor.tirelire_s3_1
+      - binary_sensor.tirelire_s3_2
+    to: "on"
+    trigger: state
+conditions:
+  - condition: template
+    value_template: >-
+      {{ states('sensor.tirelire_s3_piece_int')|is_number  and
+      states('sensor.tirelire_s3_piece_int')|float > 0 }}
+actions:
+  - metadata: {}
+    data_template:
+      entity_id: input_number.total_tirelire
+      value: >-
+        {{ states('input_number.total_tirelire')|float(0) +
+        states('sensor.tirelire_s3_piece_int')|float(0) }}
+    target:
+      entity_id: input_number.total_tirelire
+    action: input_number.set_value
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - if:
+      - condition: state
+        entity_id: input_boolean.mode_sommeil_activation_par_la_voix_alexa
+        state: "off"
+    then:
+      - action: google_generative_ai_conversation.generate_content
+        metadata: {}
+        data:
+          prompt: >-
+            anuncia en 2 frases que tengo {{
+            states('input_number.total_tirelire') }} euros en el peto, de manera
+            comica
+        response_variable: response
+      - data:
+          message: >-
+            <voice name="Lucia"> <lang xml:lang="es-ES"> <say-as
+            interpret-as='interjection'>caray. es la caña!</say-as>  Tienes :  
+            {{ states.input_number.total_tirelire.state.split(".")[0]  }}
+            euros     {%
+            if(states.input_number.total_tirelire.state.split(".")[1] | int >
+            0)  %}  {% if(states.input_number.total_tirelire.state.split(".")[1]
+            | length() ) > 1   %} y {{
+            states.input_number.total_tirelire.state.split(".")[1] | int(0)  }}
+            céntimos {% else %} y {{
+            states.input_number.total_tirelire.state.split(".")[1] | int(0) * 10
+            }} céntimos{% endif %} {% endif %}   en el peto. <say-as
+            interpret-as='interjection'>choca esos cinco</say-as></lang></voice>
+          alexa_target: media_player.echo_show_cuisine
+          alexa_type: tts
+          alexa_force: false
+        enabled: false
+        action: script.multinotify
+      - data:
+          alexa_target: media_player.echo_show_cuisine
+          alexa_type: tts
+          alexa_force: false
+          alexa_volume: 0.8
+          message: >-
+            <voice name="Lucia"> <lang xml:lang="es-ES"> {{ response.text
+            }}</lang></voice>
+        enabled: true
+        action: script.multinotify
+  - data:
+      message: "{{ states('sensor.tirelire_s3_piece_int')  }}"
+      alexa_target: media_player.echo_show_cuisine
+      alexa_type: tts
+      alexa_force: false
+    enabled: false
+    action: script.multinotify
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - data:
+      message: >-
+        Merci! total tirelire : {{ states('input_number.total_tirelire') }}
+        euros
+      icon: "2147"
+      rainbow: "false"
+      duration: "10"
+      background:
+        - 0
+        - 150
+        - 255
+      color:
+        - 0
+        - 0
+        - 0
+      effect: ""
+    action: script.awtrix_notification
+mode: queued
+max: 10
