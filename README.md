@@ -52,6 +52,11 @@ The files relative to Home assistant automations are :
   IMPORTANT :
   the file relative to Home assistant automations need to be checked, cause I use a night mode, and I'm checking if night mode is ON before making announcements. Also, I use multinotify script to make announcements, so this has to be changed for you, but it's not a big deal, the same for the script awtrix notifications which sends the message to my awtrix device..
 
+  IMPORTANT 2 :
+  in Home assistant, you have to create an input helper (input_number) called : total-tirelire
+![image](https://github.com/user-attachments/assets/6d046f66-09ac-4a0f-8dee-861e2b5d3c3b)
+
+
 
 
 The print is a little big long, but this is the v2, bigger than v1 which was very hard to arrange the cables. V2 is really pratical cause the coins can't touch the electronic parts, and are removable via a smart drawer.
